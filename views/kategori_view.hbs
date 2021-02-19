@@ -9,60 +9,53 @@
 
 <body>
   <div class="container">
-    <h2>Buku List</h2>
-    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#myModalAdd">Add Buku</button>
-    <a href="/view/kategori" class="btn btn-sm btn-primary">Data Kategori</a>
-    <table class="table table-striped" id="mytable">
+    <h2>Kategori List</h2>
+    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#myModalAddKategori">Add Kategori</button>
+    <table class="table table-striped" id="mytablekategori">
       <thead>
         <tr>
-          <th>Buku ID</th>
-          <th>Judul</th>
-          <th>Pengarang</th>
-          <th>Tahun terbit</th>
+          <th>ID Kategori</th>
+          <th>Kategori</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {{#each results}}
         <tr>
-          <td>{{ id }}</td>
-          <td>{{ judul }}</td>
-          <td>{{ pengarang }}</td>
-          <td>{{ tahun_terbit }}</td>
+          <td>{{id_kategori}}</td>
+          <td>{{nama_kategori}}</td>
           <td>
-            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id_edit="{{ id }}"
-              data-judul="{{ judul }}" data-pengarang="{{ pengarang }}" data-tahun-terbit="{{ tahun_terbit }}">Edit</a>
-            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ id }}">Delete</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id-kategori="{{ id_kategori }}"
+              data-nama-kategori="{{ nama_kategori }}">Edit</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete"
+              data-id-kategori="{{ id_kategori }}">Delete</a>
           </td>
+
         </tr>
         {{/each}}
       </tbody>
     </table>
+
+
   </div>
 
-  <!-- Modal Add Buku-->
-  <form action="/view/save/book" method="post">
-    <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- Modal Add Kategori-->
+  <form action="/save_kategori" method="post">
+    <div class="modal fade" id="myModalAddKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add New Kategori</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
-            <div class="form-group">
-              <input type="text" name="judul" class="form-control" placeholder="Judul Buku" required>
-            </div>
 
             <div class="form-group">
-              <input type="text" name="pengarang" class="form-control" placeholder="Pengarang" required>
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="tahun_terbit" class="form-control" placeholder="Tahun Terbit" required>
+              <input type="text" name="nama_kategori" class="form-control" placeholder="kategori" required>
             </div>
 
           </div>
@@ -75,33 +68,25 @@
     </div>
   </form>
 
-  <!-- Modal Update Produk-->
-  <form action="/view/update/book" method="post">
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- Modal Update Kategori-->
+  <form action="/update_kategori" method="post">
+    <div class="modal fade" id="EditModalKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <input type="hidden" name="id" class="id_edit">
-              <input type="text" name="judul" class="form-control judul_edit" placeholder="Judul buku" required>
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="pengarang" class="form-control pengarang_edit" placeholder="Pengarang" required>
-            </div>
-
-
-            <div class="form-group">
-              <input type="text" name="tahun_terbit" class="form-control tahun_terbit_edit" placeholder="Tahun terbit"
+              <input type="hidden" name="id_kategori" class="id_edit_kategori">
+              <input type="text" name="nama_kategori" class="form-control kategori_edit" placeholder="Kategori"
                 required>
             </div>
+
           </div>
           <div class="modal-footer">
             {{!-- <input type="hidden" name="id" class="id"> --}}
@@ -114,8 +99,9 @@
   </form>
 
   <!-- Modal Delete Produk-->
-  <form id="add-row-form" action="/view/delete/book" method="post">
-    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+
+  <form id="add-row-form" action="/delete_kategori" method="post">
+    <div class="modal fade" id="DeleteModalKategori" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -128,7 +114,7 @@
             <strong>Anda yakin mau menghapus data ini?</strong>
           </div>
           <div class="modal-footer">
-            <input name="id" class="form-control id2" required>
+            <input type="hidden" name="id_kategori" class="form-control id3" required>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-success">Delete</button>
           </div>
@@ -153,23 +139,23 @@
   <script>
     $(document).ready(function () {
       //tampilkan data ke modal untuk edit
-      $('#mytable').on('click', '.edit', function () {
-        var id = $(this).data('id_edit');
-        var judul = $(this).data('judul');
-        var pengarang = $(this).data('pengarang');
-        var tahun_terbit = $(this).data('tahun-terbit');
-        console.log($(this).data('tahun-terbit'));
-        $('#EditModal').modal('show');
-        $('.id_edit').val(id);
-        $('.judul_edit').val(judul);
-        $('.pengarang_edit').val(pengarang);
-        $('.tahun_terbit_edit').val(tahun_terbit);
+      $('#mytablekategori').on('click', '.edit', function () {
+        var id_kategori = $(this).data('id-kategori');
+        var nama_kategori = $(this).data('nama-kategori');
+       
+        $('#EditModalKategori').modal('show');
+        $('.id_edit_kategori').val(id_kategori);
+        $('.kategori_edit').val(nama_kategori);
+
       });
+
       //tampilkan modal hapus record
-      $('#mytable').on('click', '.delete', function () {
-        var id = $(this).data('id');
-        $('#DeleteModal').modal('show');
-        $('.id2').val(id);
+      $('#mytablekategori').on('click', '.delete', function () {
+        var id_kategori = $(this).data('id-kategori');
+
+        $('#DeleteModalKategori').modal('show');
+        $('.id3').val(id_kategori);
+
       });
 
     });
