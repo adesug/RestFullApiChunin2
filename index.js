@@ -1,3 +1,4 @@
+require('dotenv').config({})
 const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
@@ -5,13 +6,14 @@ const bodyParser = require("body-parser");
 // const hbs = require("handlebars");
 const app = express();
 
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env
 
 //konfigurasi koneksi
 const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'databuku'
+    host: DB_HOST,
+    user: DB_USERNAME,
+    password: DB_PASSWORD,
+    database: DB_DATABASE
   });
 
   //connect ke database
