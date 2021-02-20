@@ -5,7 +5,7 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 // const hbs = require("handlebars");
 const app = express();
-const port = 8007;
+const port = 8007 || $PORT;
 
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env
 
