@@ -5,6 +5,7 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 // const hbs = require("handlebars");
 const app = express();
+const port = 8007;
 
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env
 
@@ -287,7 +288,7 @@ app.delete('/api/category/:id',(req, res) => {
 
 
 //server listening
-app.listen(8007, () => {
+app.listen(port, () => {
     console.log('Server is running at port 8000');
-  });
+});
    
