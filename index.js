@@ -177,7 +177,8 @@ let query = conn.query(sql, (err, results) => {
   // res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
   res.json({
     msg: 'Success',
-    status : 200
+    status : 200,
+    results : results
 });
 });
 });
@@ -202,7 +203,8 @@ app.get('/api/category/:id',(req, res) => {
     // res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
     res.json({
       msg: 'Success',
-      status : 200
+      status : 200,
+      results : results
   });
   });
 });
@@ -246,7 +248,6 @@ app.put('/api/books/:id',(req, res) => {
   console.log(sql);
   let query = conn.query(sql, (err, results) => {
       if(err) throw err;
-      
       res.json({
       msg: 'Update data berhasil',
       status : 200
