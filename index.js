@@ -174,7 +174,11 @@ app.get('/api/books/:id',(req, res) => {
 let sql = "SELECT * FROM buku WHERE id="+req.params.id;
 let query = conn.query(sql, (err, results) => {
   if(err) throw err;
-  res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  // res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  res.json({
+    msg: 'Success',
+    status : 200
+});
 });
 });
 
@@ -186,8 +190,7 @@ app.get('/api/category',(req, res) => {
       if(err) throw err;  
       res.json({
           msg : 'Success',
-          status : 200,
-          results: results
+          status : 200
       });
   });
 });
@@ -196,7 +199,11 @@ app.get('/api/category/:id',(req, res) => {
   let sql = "SELECT * FROM kategori WHERE id_kategori="+req.params.id;
   let query = conn.query(sql, (err, results) => {
     if(err) throw err;
-    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+    // res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+    res.json({
+      msg: 'Success',
+      status : 200
+  });
   });
 });
 
@@ -229,6 +236,8 @@ app.post('/api/category',(req, res) => {
       });
   });
 });
+
+
 
 //route untuk update data
 app.put('/api/books/:id',(req, res) => {
