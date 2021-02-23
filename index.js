@@ -33,16 +33,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //** VIEWS HBS */
 
-app.get('/', (req, res) => {
-  res.send({
-    msg: 'Welcome to my Rest',
-    status: 200,
-    author: 'ADESUG'
-  })
-});
+// app.get('/', (req, res) => {
+//   res.send({
+//     msg: 'Welcome to my Rest',
+//     status: 200,
+//     author: 'ADESUG'
+//   })
+// });
 
 //route untuk homepage
-app.get('/view/book',(req, res) => {
+app.get('/',(req, res) => {
 // app.get('/api/books',(req, res) => {
     // console.log(req);
     let sql = "SELECT * FROM buku";
